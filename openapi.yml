@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Financial Ideas API
+  description: API for fetching trading and investing ideas
+  version: 1.0.0
+servers:
+  - url: https://host/apis
+paths:
+  /trading:
+    get:
+      summary: Get trading ideas
+      operationId: getTradingIdeas
+      tags:
+        - Trading
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: An array of trading ideas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TradingIdea'
+  /investing:
+    get:
+      summary: Get investing ideas
+      operationId: getInvestingIdeas
+      tags:
+        - Investing
+      security:
+        - ApiKeyAuth: []
+      responses:
+        '200':
+          description: An array of investing ideas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InvestingIdea'
+components:
+  schemas:
+    TradingIdea:
+      type: object
+      properties:
+        companycode:
+          type: string
+          example: code1
+        companyName:
+          type: string
+          example: CompanyName1
+        RecommendatedPrice:
+          type: string
+          example: "476"
+        cpm:
+          type: string
+          example: "475"
+        targetPrice:
+          type: string
+          example: "481"
+        Stop Loss:
+          type: string
+          example: "473"
+        exit:
+          type: string
+          example: "479"
+          nullable: true
+    InvestingIdea:
+      type: object
+      properties:
+        companycode:
+          type: string
+          example: code1
+        companyName:
+          type: string
+          example: CompanyName1
+        upside:
+          type: string
+          example: "24.78"
+        cpm:
+          type: string
+          example: "480"
+        targetPrice:
+          type: string
+          example: "520"
+        Stop Loss:
+          type: string
+          example: null
+          nullable: true
+        reportlink:
+          type: string
+          example: "https://example.com/report.pdf"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-auth-header
