@@ -2,7 +2,8 @@
   "mappings": [
     "/content/aem-ue-demo/:/",
     "/content/aem-ue-demo/configuration:/.helix/config.json",
-    "/content/aem-ue-demo/metadata:/metadata.json"
+    "/content/brightline/headers:/.helix/headers.json"
+    "/content/aem-ue-demo/metadata:/metadata.json",
   ],
   "includes": [
     "/content/aem-ue-demo/"
